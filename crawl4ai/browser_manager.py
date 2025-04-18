@@ -512,7 +512,7 @@ class BrowserManager:
         if self.config.extra_args:
             args.extend(self.config.extra_args)
 
-        browser_args = {"headless": self.config.headless, "args": args}
+        browser_args = {"headless": self.config.headless, "devtools": self.config.devtools, "args": args}
 
         if self.config.chrome_channel:
             browser_args["channel"] = self.config.chrome_channel

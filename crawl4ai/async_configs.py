@@ -166,6 +166,7 @@ class BrowserConfig:
                             Default: "chromium".
         headless (bool): Whether to run the browser in headless mode (no visible GUI).
                          Default: True.
+        devtools (bool): Whether to open the DevTools window for debugging.
         use_managed_browser (bool): Launch the browser using a managed approach (e.g., via CDP), allowing
                                     advanced manipulation. Default: False.
         cdp_url (str): URL for the Chrome DevTools Protocol (CDP) endpoint. Default: "ws://localhost:9222/devtools/browser/".
@@ -218,6 +219,7 @@ class BrowserConfig:
         self,
         browser_type: str = "chromium",
         headless: bool = True,
+        devtools: bool = False,
         use_managed_browser: bool = False,
         cdp_url: str = None,
         use_persistent_context: bool = False,
@@ -254,6 +256,7 @@ class BrowserConfig:
     ):
         self.browser_type = browser_type
         self.headless = headless
+        self.devtools = devtools
         self.use_managed_browser = use_managed_browser
         self.cdp_url = cdp_url
         self.use_persistent_context = use_persistent_context
@@ -308,6 +311,7 @@ class BrowserConfig:
         return BrowserConfig(
             browser_type=kwargs.get("browser_type", "chromium"),
             headless=kwargs.get("headless", True),
+            devtools=kwargs.get("devtools", False),
             use_managed_browser=kwargs.get("use_managed_browser", False),
             cdp_url=kwargs.get("cdp_url"),
             use_persistent_context=kwargs.get("use_persistent_context", False),
@@ -341,6 +345,7 @@ class BrowserConfig:
         return {
             "browser_type": self.browser_type,
             "headless": self.headless,
+            "devtools": self.devtools,
             "use_managed_browser": self.use_managed_browser,
             "cdp_url": self.cdp_url,
             "use_persistent_context": self.use_persistent_context,
